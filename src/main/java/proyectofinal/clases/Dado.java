@@ -14,8 +14,11 @@ public class Dado {
 	}
 
 	public Dado() {
-		this.color = Colores.BL;
-		this.tipo = Tipos.D6;
+		this(Colores.BL,Tipos.D6);
+	}
+	
+	public Dado(Tipos tipo) {
+		this(Colores.BL,tipo);
 	}
 	
 	public int lanzarDado() {
