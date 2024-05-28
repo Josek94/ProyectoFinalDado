@@ -4,12 +4,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofinal.dado.MenuController">
    <children>
@@ -25,7 +28,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="236.0" GridPane.rowIndex="1">
                <children>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Dados">
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="103.0" text="Dados">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#generarD4" text="D4" />
                       <MenuItem mnemonicParsing="false" onAction="#generarD6" text="D6" />
@@ -40,6 +43,9 @@
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </MenuButton>
                </children>
                
@@ -54,5 +60,10 @@
             </HBox>
          </children>
       </GridPane>
+      <ImageView fx:id="imagenDelPrograma" fitHeight="293.0" fitWidth="297.0" layoutX="209.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/diceGif2.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -38,6 +38,6 @@
             <Insets bottom="10.0" />
          </padding>
       </HBox>
-      <ImageView fitHeight="150.0" fitWidth="195.0" onMouseClicked="#generarDado" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ImageView fx:id="dadoImagenView" fitHeight="150.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
 </GridPane>

@@ -10,6 +10,9 @@ import proyectofinal.clases.Dado;
 import proyectofinal.clases.Tipos;
 
 public class DadoController {
+	
+	@FXML
+	private ImageView dadoImagenView;
 
 	@FXML
 	private void volverAlMenuDado() throws IOException {
@@ -24,8 +27,7 @@ public class DadoController {
 	private void generarDado() throws IOException{
 		Dado dado = new Dado(MenuController.getTipoDado());
 		int lanzamiento = dado.lanzarDado();	
-		ImageView img = new ImageView(dado.devuelveImagenDado(lanzamiento));
-		
+		dadoImagenView.setImage(dado.devuelveImagenDado(lanzamiento,dado.getTipo()));
 		/*Alert dadoD = new Alert(AlertType.INFORMATION);
 		dadoD.setTitle(dado.getTipo().getNombreCompleto());
 		dadoD.setHeaderText(null);

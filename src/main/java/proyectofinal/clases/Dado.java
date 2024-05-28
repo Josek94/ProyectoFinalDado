@@ -45,36 +45,13 @@ public class Dado {
 		return lanzamiento;
 	}
 	
-	public Image devuelveImagenDado(int lanzamiento) {
-		
-		if(this.tipo == Tipos.D6) {
-			switch(lanzamiento) {
-			case 1:
-				return new Image("/img/dados1");
+	public Image devuelveImagenDado(int lanzamiento, Tipos tipo) {
 			
-			case 2:
-				return new Image("/img/dados2");
+			return new Image(getClass().getResource("/proyectofinal/img/dados"+ lanzamiento + tipo.getNombreSimple() +".png").toExternalForm());
 		
-			case 3:
-				return new Image("/img/dados3");
-			
-			case 4:
-				return new Image("/img/dados4");
-				
-			case 5:
-				return new Image("/img/dados5");
-				
-			case 6:
-				return new Image("/img/dados6");
-				
-			default:
-				return new Image("/img/dados6");
-			}
-		}
-		else {
-			return null;
-		}
 	}
+	
+	
 
 	@Override
 	public String toString() {
