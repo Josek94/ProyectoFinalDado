@@ -38,7 +38,12 @@ public class Dado {
 
 	public int lanzarDado() {
 		Random random = new Random();
-		int lanzamiento = random.nextInt(tipo.getNumMax()) + tipo.getNumMin();
+		int lanzamiento;
+		if(this.tipo == Tipos.D10) {
+		lanzamiento = random.nextInt(tipo.getNumMax()+1) + tipo.getNumMin();
+		} else {
+		lanzamiento = random.nextInt(tipo.getNumMax()) + tipo.getNumMin();
+		}
 		contadorDeTiradas++;
 		//cantidadDeLanzamientosAlamacenados.put(lanzamiento, cantidadDeLanzamientosAlamacenados.get(lanzamiento)+1);
 		cantidadDeLanzamientosAlamacenados.compute(lanzamiento, (Integer key, Integer value) -> (value == null)? 1 : value+1);

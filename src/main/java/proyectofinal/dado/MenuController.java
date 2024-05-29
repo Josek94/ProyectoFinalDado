@@ -60,7 +60,7 @@ public class MenuController {
 	
 	@FXML
 	private void generarD20() throws IOException{
-		tipoDado = Tipos.D4;
+		tipoDado = Tipos.D20;
 		App.setRoot("lanzamiento");
 		
 		
