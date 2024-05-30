@@ -71,9 +71,11 @@ public class MenuController {
 		System.exit(0);
 	}
 	
+	
+	
 	@FXML
-	private void volverAlMenu() throws IOException {
-		App.setRoot("menu");
+	private void bolsaDeDados() throws IOException{
+		App.setRoot("bolsaDeDados");
 	}
 
 	public static Tipos getTipoDado() {

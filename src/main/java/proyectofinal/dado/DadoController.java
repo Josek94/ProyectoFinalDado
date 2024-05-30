@@ -7,7 +7,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import proyectofinal.clases.Dado;
-import proyectofinal.clases.Tipos;
 
 public class DadoController {
 	
@@ -28,11 +27,20 @@ public class DadoController {
 		Dado dado = new Dado(MenuController.getTipoDado());
 		int lanzamiento = dado.lanzarDado();	
 		dadoImagenView.setImage(dado.devuelveImagenDado(lanzamiento,dado.getTipo()));
-		/*Alert dadoD = new Alert(AlertType.INFORMATION);
-		dadoD.setTitle(dado.getTipo().getNombreCompleto());
-		dadoD.setHeaderText(null);
-		dadoD.setContentText("Se ha lanzado el " + dado.getTipo().getNombreCompleto() +"...\n" + dado.lanzarDado());
-		dadoD.showAndWait();*/
+		if(lanzamiento == 20) {
+			Alert dadoD = new Alert(AlertType.INFORMATION);
+			dadoD.setTitle("¡CRITICO!");
+			dadoD.setHeaderText(null);
+			dadoD.setContentText("¡Que suerte!¡Ha sido un critico!");
+			dadoD.showAndWait();
+		} else if(lanzamiento == 1) {
+			Alert dadoD = new Alert(AlertType.WARNING);
+			dadoD.setTitle("PIFIA..");
+			dadoD.setHeaderText(null);
+			dadoD.setContentText("ugh.. mala pata...");
+			dadoD.showAndWait();
+		}
+		
 		
 	}
 	
