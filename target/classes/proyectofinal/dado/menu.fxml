@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofinal.dado.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="528.0" style="-fx-background-color: #f5e9a2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofinal.dado.MenuController">
    <children>
       <GridPane alignment="CENTER" prefHeight="400.0" prefWidth="223.0">
         <columnConstraints>
@@ -28,7 +28,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="236.0" GridPane.rowIndex="1">
                <children>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="103.0" text="Dados">
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: #d5a2f5;" text="Dados">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#generarD4" text="D4" />
                       <MenuItem mnemonicParsing="false" onAction="#generarD6" text="D6" />
@@ -47,13 +47,13 @@
                         <Font size="18.0" />
                      </font>
                   </MenuButton>
-                  <Button mnemonicParsing="false" onAction="#bolsaDeDados" text="Bolsa de dados" />
+                  <Button mnemonicParsing="false" onAction="#bolsaDeDados" style="-fx-background-color: #d5a2f5;" text="Bolsa de dados" />
                </children>
                
             </VBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false" onAction="#salir" text="salir" />
+                  <Button mnemonicParsing="false" onAction="#salir" style="-fx-background-color: #d5a2f5;" text="salir" />
                </children>
                <padding>
                   <Insets bottom="10.0" />

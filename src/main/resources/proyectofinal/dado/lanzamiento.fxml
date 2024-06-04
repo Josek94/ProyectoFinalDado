@@ -7,9 +7,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofinal.dado.DadoController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f5e9a2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofinal.dado.DadoController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -20,24 +21,29 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-         <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generarDado" prefHeight="47.0" prefWidth="110.0" style="-fx-font-size: 17;" text="Lanzar">
-               <font>
-                  <Font name="Goudy Old Style" size="12.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
       <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
          <children>
-            <Button mnemonicParsing="false" onAction="#volverAlMenuDado" text="Volver al menu" />
-            <Button mnemonicParsing="false" onAction="#salirDado" text="Salir" />
+            <Button mnemonicParsing="false" onAction="#volverAlMenuDado" style="-fx-background-color: #d5a2f5;" text="Volver al menu" />
+            <Button mnemonicParsing="false" onAction="#salirDado" style="-fx-background-color: #d5a2f5;" text="Salir" />
          </children>
          <padding>
             <Insets bottom="10.0" />
          </padding>
       </HBox>
       <ImageView fx:id="dadoImagenView" fitHeight="150.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.rowIndex="1">
+         <children>
+            <Button fx:id="botonGenerar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generarDado" prefHeight="47.0" prefWidth="110.0" style="-fx-font-size: 17; -fx-background-color: #d5a2f5;" text="Generar">
+               <font>
+                  <Font name="Goudy Old Style" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="botonLanzar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#lanzarDado" prefHeight="47.0" prefWidth="110.0" style="-fx-font-size: 17; -fx-background-color: #d5a2f5;" text="Lanzar" visible="false">
+               <font>
+                  <Font name="Goudy Old Style" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </GridPane>

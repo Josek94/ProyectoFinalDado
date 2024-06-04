@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * JavaFX App
@@ -27,8 +28,17 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
+    	URL fxmlLocation = App.class.getResource("/proyectofinal/dado/" + fxml + ".fxml");
+        if (fxmlLocation == null) {
+            throw new IllegalStateException("No se pudo encontrar el archivo FXML: " + fxml + ".fxml");
+        }
+        FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
+        return fxmlLoader.load();
+    	
+    	/*
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
+        */
     }
 
     public static void main(String[] args) {
