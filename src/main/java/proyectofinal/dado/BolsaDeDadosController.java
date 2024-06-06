@@ -60,7 +60,7 @@ public class BolsaDeDadosController {
 	
 	
 	@FXML
-	private void anadirDadoD4ALaBolsa() {
+	private void anadirDadoD4ALaBolsa()throws IOException {
 		Dado D4 = new Dado(Tipos.D4);
 		dadosIncluidosEnLaBolsa.add(D4);
 		establecerImagenEnProximaDisponible(D4.devuelveImagenDado(1, D4.getTipo()));
@@ -68,7 +68,7 @@ public class BolsaDeDadosController {
 	}
 	
 	@FXML
-	private void anadirDadoD6ALaBolsa() {
+	private void anadirDadoD6ALaBolsa()throws IOException {
 		Dado D6 = new Dado(Tipos.D6);
 		dadosIncluidosEnLaBolsa.add(D6);
 		establecerImagenEnProximaDisponible(D6.devuelveImagenDado(1, D6.getTipo()));
@@ -76,7 +76,7 @@ public class BolsaDeDadosController {
 	}
 	
 	@FXML
-	private void anadirDadoD8ALaBolsa() {
+	private void anadirDadoD8ALaBolsa()throws IOException {
 		Dado D8 = new Dado(Tipos.D8);
 		dadosIncluidosEnLaBolsa.add(D8);
 		establecerImagenEnProximaDisponible(D8.devuelveImagenDado(1, D8.getTipo()));
@@ -84,7 +84,7 @@ public class BolsaDeDadosController {
 	}
 	
 	@FXML
-	private void anadirDadoD10ALaBolsa() {
+	private void anadirDadoD10ALaBolsa()throws IOException {
 		Dado D10 = new Dado(Tipos.D10);
 		dadosIncluidosEnLaBolsa.add(D10);
 		establecerImagenEnProximaDisponible(D10.devuelveImagenDado(1, D10.getTipo()));
@@ -92,7 +92,7 @@ public class BolsaDeDadosController {
 	}
 	
 	@FXML
-	private void anadirDadoD12ALaBolsa() {
+	private void anadirDadoD12ALaBolsa()throws IOException {
 		Dado D12 = new Dado(Tipos.D12);
 		dadosIncluidosEnLaBolsa.add(D12);
 		establecerImagenEnProximaDisponible(D12.devuelveImagenDado(1, D12.getTipo()));
@@ -100,7 +100,7 @@ public class BolsaDeDadosController {
 	}
 	
 	@FXML
-	private void anadirDadoD20ALaBolsa() {
+	private void anadirDadoD20ALaBolsa()throws IOException {
 		Dado D20 = new Dado(Tipos.D20);
 		dadosIncluidosEnLaBolsa.add(D20);
 		establecerImagenEnProximaDisponible(D20.devuelveImagenDado(1, D20.getTipo()));
@@ -108,7 +108,7 @@ public class BolsaDeDadosController {
 	}
 	
 	@FXML
-	private void LanzarbolsaDeDados() {
+	private void LanzarbolsaDeDados()throws IOException {
 		if(dadosIncluidosEnLaBolsa.isEmpty()) {
 			label.setText("La bolsa esta vacia, introduce algun dado");
 		}

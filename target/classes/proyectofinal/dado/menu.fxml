@@ -51,9 +51,10 @@
                </children>
                
             </VBox>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
                <children>
                   <Button mnemonicParsing="false" onAction="#salir" style="-fx-background-color: #d5a2f5;" text="salir" />
+                  <Button mnemonicParsing="false" onAction="#generarExcel" style="-fx-background-color: #d5a2f5;" text="Generar excel" />
                </children>
                <padding>
                   <Insets bottom="10.0" />

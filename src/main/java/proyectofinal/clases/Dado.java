@@ -6,12 +6,13 @@ import java.util.Map;
 import java.util.Random;
 
 import javafx.scene.image.Image;
+import proyectofinal.dado.MenuController;
 
 public class Dado {
 
 	private Colores color;
 	private Tipos tipo;
-	private int contadorDeTiradas;
+	private int contadorDeTiradas = 0;
 	private Map<Integer, Integer> cantidadDeLanzamientosAlamacenados;
 
 	public Dado(Colores color, Tipos tipo) {
@@ -19,13 +20,14 @@ public class Dado {
 		this.tipo = tipo;
 		contadorDeTiradas = 0;
 		cantidadDeLanzamientosAlamacenados = new HashMap<>();
-		/*for (int i = 0; i < tipo.getNumMax(); i++) {
+		MenuController.getDadosTotales().add(this);
+		for (int i = 0; i < tipo.getNumMax(); i++) {
 			if (!(tipo.getNumMax() == 10)) {
 				cantidadDeLanzamientosAlamacenados.put(i + 1, 0);
 			} else {
 				cantidadDeLanzamientosAlamacenados.put(i, 0);
 			}
-		}*/
+		}
 	}
 
 	public Dado() {
@@ -47,6 +49,7 @@ public class Dado {
 		contadorDeTiradas++;
 		//cantidadDeLanzamientosAlamacenados.put(lanzamiento, cantidadDeLanzamientosAlamacenados.get(lanzamiento)+1);
 		cantidadDeLanzamientosAlamacenados.compute(lanzamiento, (Integer key, Integer value) -> (value == null)? 1 : value+1);
+		
 		return lanzamiento;
 	}
 	
@@ -75,4 +78,8 @@ public class Dado {
 		return contadorDeTiradas;
 	}
 
+	public Map<Integer, Integer> getCantidadDeLanzamientosAlamacenados() {
+		return cantidadDeLanzamientosAlamacenados;
+	}
+	
 }

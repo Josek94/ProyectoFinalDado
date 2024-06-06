@@ -1,8 +1,8 @@
 package proyectofinal.clases;
 
 public enum Tipos {
-	D6("Dado de 6 caras",6,1,"D6"),
 	D4("Dado de 4 caras",4,1,"D4"),
+	D6("Dado de 6 caras",6,1,"D6"),
 	D8("Dado de 8 caras",8,1,"D8"),
 	D10("Dado de 10 caras",9,0,"D10"),
 	D12("Dado de 12 caras",12,1,"D12"),
