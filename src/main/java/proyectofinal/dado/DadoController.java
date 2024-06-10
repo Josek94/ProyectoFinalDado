@@ -75,11 +75,8 @@ public class DadoController {
         timeline.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	try {
-					resultadoLanzarDado();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+            	int lanzamiento = dado.lanzarDado();	
+				dadoImagenView.setImage(dado.devuelveImagenDado(lanzamiento,dado.getTipo()));
             }
         });
 
@@ -88,10 +85,7 @@ public class DadoController {
     }
 	
 	
-	private void resultadoLanzarDado() throws IOException{
-		int lanzamiento = dado.lanzarDado();	
-		dadoImagenView.setImage(dado.devuelveImagenDado(lanzamiento,dado.getTipo()));
-	}
+	
 	
 	
 	

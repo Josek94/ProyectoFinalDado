@@ -11,7 +11,7 @@ import proyectofinal.dado.MenuController;
 public class Dado {
 	
 	private Tipos tipo;
-	private int contadorDeTiradas = 0;
+	private int contadorDeTiradas;
 	private Map<Integer, Integer> cantidadDeLanzamientosAlamacenados;
 
 	public Dado(Tipos tipo) {
@@ -20,11 +20,9 @@ public class Dado {
 		cantidadDeLanzamientosAlamacenados = new HashMap<>();
 		MenuController.getDadosTotales().add(this);
 		for (int i = 0; i < tipo.getNumMax(); i++) {
-			if ((tipo == Tipos.D10)) {
-				cantidadDeLanzamientosAlamacenados.put(i + 1, 0);
-			} else {
-				cantidadDeLanzamientosAlamacenados.put(i, 0);
-			}
+			if (!(tipo == Tipos.D10)) {
+				cantidadDeLanzamientosAlamacenados.put(i+1, 0);
+			} 
 		}
 	}
 
@@ -34,11 +32,11 @@ public class Dado {
 
 	public int lanzarDado() {
 		Random random = new Random();
-		int lanzamiento;
-		if(this.tipo == Tipos.D10) {
-		lanzamiento = random.nextInt(tipo.getNumMax()+1) + tipo.getNumMin();
-		} else {
+		int lanzamiento = random.nextInt(tipo.getNumMax()) + tipo.getNumMin();
+		if(!(this.tipo == Tipos.D10)) {
 		lanzamiento = random.nextInt(tipo.getNumMax()) + tipo.getNumMin();
+		} else {
+		lanzamiento = random.nextInt(tipo.getNumMax()+1) + tipo.getNumMin();
 		}
 		contadorDeTiradas++;
 		//cantidadDeLanzamientosAlamacenados.put(lanzamiento, cantidadDeLanzamientosAlamacenados.get(lanzamiento)+1);
@@ -57,7 +55,7 @@ public class Dado {
 
 	@Override
 	public String toString() {
-		return "Dado [tipo=" + tipo + "]";
+		return "Dado [tipo=" + tipo + "contador de tiradas="+ contadorDeTiradas +"]";
 	}
 
 	
@@ -73,5 +71,8 @@ public class Dado {
 	public Map<Integer, Integer> getCantidadDeLanzamientosAlamacenados() {
 		return cantidadDeLanzamientosAlamacenados;
 	}
+	
+	
+
 	
 }

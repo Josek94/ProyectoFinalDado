@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -98,9 +99,6 @@ public class MenuController {
 	private void generarExcel()throws IOException{
 		Workbook excel = new XSSFWorkbook();
 		Sheet hoja = excel.createSheet("Hoja1");
-		/*List<Dado> dadosOrdenados = dadosTotales.stream()
-		.sorted((d1, d2) -> d1.getTipo().compareTo(d2.getTipo()))
-		.collect(Collectors.toList());*/
 		
 		if (dadosTotales.isEmpty()) {
             Alert alerta = new Alert(AlertType.WARNING);
@@ -116,20 +114,26 @@ public class MenuController {
 		Row filaEncabezado = hoja.createRow(0);
 		filaEncabezado.createCell(0).setCellValue("Tipo de Dado");
         filaEncabezado.createCell(1).setCellValue("Contador de Tiradas");
-        /*
-        for(int i = 0; i < Tipos.D20.getNumMax(); i++) {
-        	Dado dado = dadosTotales.get(i);
-        	Row fila = hoja.createRow(i + 1);
-        	filaEncabezado.createCell(i+2).setCellValue(i);
-        	
-        	fila.createCell(3).setCellValue(dado.getCantidadDeLanzamientosAlamacenados().get(i));
-        }*/
+        
+        int maxLados = dadosTotales.stream()
+                .mapToInt(dado -> dado.getTipo().getNumMax())
+                .max()
+                .orElse(20);
+        
+        for (int i = 1; i <= maxLados; i++) {
+        	filaEncabezado.createCell(i + 1).setCellValue("Valor " + i);
+}
 		
         for (int i = 0; i < dadosTotales.size(); i++) {
             Dado dado = dadosTotales.get(i);
             Row fila = hoja.createRow(i + 1);
             fila.createCell(0).setCellValue(dado.getTipo().getNombreSimple());
             fila.createCell(1).setCellValue(dado.getContadorDeTiradas());
+            
+            Map<Integer, Integer> lanzamientos = dado.getCantidadDeLanzamientosAlamacenados();
+            for (Map.Entry<Integer, Integer> entry : lanzamientos.entrySet()) {
+                fila.createCell(entry.getKey() + 1).setCellValue(entry.getValue());
+            }
         }
 		
 		
