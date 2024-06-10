@@ -2,10 +2,19 @@ package proyectofinal.dado;
 
 
 
+
+
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -17,6 +26,7 @@ import proyectofinal.clases.Tipos;
 
 public class BolsaDeDadosController {
 	private List<Dado> dadosIncluidosEnLaBolsa = new ArrayList<Dado>();
+	private final Random random = new Random();
 	
 	@FXML
 	private ImageView dado1;
@@ -107,51 +117,67 @@ public class BolsaDeDadosController {
 		
 	}
 	
-	@FXML
-	private void LanzarbolsaDeDados()throws IOException {
-		if(dadosIncluidosEnLaBolsa.isEmpty()) {
-			label.setText("La bolsa esta vacia, introduce algun dado");
-		}
-	    List<Integer> resultados = new ArrayList<>();
-	    for (Dado dado : dadosIncluidosEnLaBolsa) {
-	        resultados.add(dado.lanzarDado());
-	    }
-	    actualizarImagenes(resultados);
-	}
-	
-	private void actualizarImagenes(List<Integer> resultados) {
-	    dado1.setImage(null);
-	    dado2.setImage(null);
-	    dado3.setImage(null);
-	    dado4.setImage(null);
-	    dado5.setImage(null);
-	    dado6.setImage(null);
-	    
-	    for (int i = 0; i < resultados.size() && i < 6; i++) {
-	        Image dadoImagen = dadosIncluidosEnLaBolsa.get(i).devuelveImagenDado(resultados.get(i), dadosIncluidosEnLaBolsa.get(i).getTipo());
-	        switch (i) {
-	            case 0:
-	                dado1.setImage(dadoImagen);
-	                break;
-	            case 1:
-	                dado2.setImage(dadoImagen);
-	                break;
-	            case 2:
-	                dado3.setImage(dadoImagen);
-	                break;
-	            case 3:
-	                dado4.setImage(dadoImagen);
-	                break;
-	            case 4:
-	                dado5.setImage(dadoImagen);
-	                break;
-	            case 5:
-	                dado6.setImage(dadoImagen);
-	                break;
-	        }
-	    }
-	}
+    @FXML
+    private void lanzarBolsaDeDados() throws IOException {
+        if (dadosIncluidosEnLaBolsa.isEmpty()) {
+            label.setText("La bolsa esta vacia, introduce algun dado");
+            return;
+        }
 
+        List<ImageView> imageViews = new ArrayList<>();
+        imageViews.add(dado1);
+        imageViews.add(dado2);
+        imageViews.add(dado3);
+        imageViews.add(dado4);
+        imageViews.add(dado5);
+        imageViews.add(dado6);
+
+        for (int i = 0; i < dadosIncluidosEnLaBolsa.size(); i++) {
+            Dado dado = dadosIncluidosEnLaBolsa.get(i);
+            ImageView imageView = imageViews.get(i);
+            animacionTirada(dado, imageView);
+        }
+    }
+
+    private void animacionTirada(Dado dado, ImageView imageView) {
+        Timeline timeline = new Timeline();
+        int numFrames = 20;
+        for (int i = 0; i < numFrames; i++) {
+            int lanzamientoAleatorio = random.nextInt(dado.getTipo().getNumMax()) + dado.getTipo().getNumMin();
+            KeyFrame keyFrame = new KeyFrame(
+                Duration.millis(i * 50),
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        imageView.setImage(dado.devuelveImagenDado(lanzamientoAleatorio, dado.getTipo()));
+                        imageView.setRotate(imageView.getRotate() + 18);
+                        imageView.setTranslateX(random.nextInt(10) - 5);
+                        imageView.setTranslateY(random.nextInt(10) - 5);
+                    }
+                }
+            );
+            timeline.getKeyFrames().add(keyFrame);
+        }
+
+        timeline.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                mostrarResultadoFinal(dado, imageView);
+            }
+        });
+
+        timeline.play();
+    }
+
+    private void mostrarResultadoFinal(Dado dado, ImageView imageView) {
+        int lanzamiento = dado.lanzarDado();
+        imageView.setImage(dado.devuelveImagenDado(lanzamiento, dado.getTipo()));
+        imageView.setRotate(0);
+        imageView.setTranslateX(0);
+        imageView.setTranslateY(0);
+
+    }
+	
 
 	@FXML
 	private void salir() throws IOException {

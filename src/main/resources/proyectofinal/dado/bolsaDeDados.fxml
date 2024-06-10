@@ -47,7 +47,7 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <Button mnemonicParsing="false" onAction="#LanzarbolsaDeDados" prefHeight="39.0" prefWidth="105.0" style="-fx-background-color: #d5a2f5;" text="Lanzar">
+                  <Button mnemonicParsing="false" onAction="#lanzarBolsaDeDados" prefHeight="39.0" prefWidth="105.0" style="-fx-background-color: #d5a2f5;" text="Lanzar">
                      <font>
                         <Font size="14.0" />
                      </font>
